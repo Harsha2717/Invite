@@ -10,9 +10,9 @@ function App() {
     <>
       <div>
         <h1> Jai Shree Ram</h1>
-        <img style={{width: "100px", height: "100px"}} src='src\assets\Ganesh.jpg' />
+        <img style={{width: "100px", height: "100px"}} src='/Ganesh.jpg' />
         <div> I personally invite everyone to my Sister Engagement</div>
-        <img src='src\assets\Jaanu-Enagagement.jpeg'></img>
+        <img src='/Jaanu-Enagagement.jpeg'></img>
        </div>
     </>
   )
