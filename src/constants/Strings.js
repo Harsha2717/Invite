@@ -6,7 +6,7 @@ export const STRINGS = {
     SAVE_THE_DATE: "SAVE THE DATE",
     HEART_SYMBOL: "♥",
     WEDDING_DATE_STRING: "26 April 2026",
-    WEDDING_DATE : new Date("2026-03-09"),
+    WEDDING_DATE : new Date("2026-04-26"),
     WEDDING_TIME: "08:30 PM",
     WEDDING_PLACE: "Hyderabad",
     COUNTRY: "India",
