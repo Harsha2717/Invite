@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Ananya & Rohan – Wedding Invitation</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+				<style>
+    :root {
+      --bg: #fdf9f5;
+      --rose: #e8c5c9;
+      --accent: #c89ca4;
+      --text-dark: #5d3e3e;
+      --text-light: #8a6f6f;
+      --gold: #d4af37;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text-dark);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Floral corner accents – replace with real PNGs later if desired */
+    .floral {
+      position: absolute;
+      font-size: 9rem;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .fl-tl { top: -50px; left: -40px; transform: rotate(-20deg); }
+    .fl-tr { top: -60px; right: -50px; transform: rotate(25deg); }
+    .fl-bl { bottom: -90px; left: -60px; transform: rotate(-35deg); }
+    .fl-br { bottom: -100px; right: -50px; transform: rotate(20deg); }
+    header {
+      padding: 90px 30px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .login {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 8px 18px;
+      border: 1px solid var(--rose);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.6);
+    }
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5.8rem;
+      line-height: 0.88;
+      margin: 0.1em 0;
+    }
+    .heart {
+      font-size: 2.5rem;
+      color: #c94b6c;
+      margin: 0 0.35em;
+      vertical-align: middle;
+    }
+    .save-date {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin: 1.6em 0 1.2em;
+    }
+    .main-date {
+      font-size: 1.45rem;
+      color: var(--accent);
+      margin: 0.5em 0;
+    }
+    .location {
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+    section {
+      padding: 60px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.8em;
+      position: relative;
+    }
+    h2::before,
+    h2::after {
+      content: "——";
+      color: var(--gold);
+      letter-spacing: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.6rem;
+    }
+    h2::before { left: -90px; }
+    h2::after { right: -90px; }
+    .intro {
+      font-size: 1.18rem;
+      max-width: 360px;
+      margin: 0 auto 2.8em;
+      color: #6b4e4e;
+      font-style: italic;
+      line-height: 1.8;
+    }
+    .events-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .event-card {
+      background: rgba(248,240,236,0.82);
+      border: 1px solid rgba(200,156,164,0.28);
+      border-radius: 20px;
+      padding: 28px 22px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(200,156,164,0.18);
+    }
+    .event-icon {
+      font-size: 3rem;
+      margin-bottom: 1em;
+      color: var(--accent);
+    }
+    .event-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.6em;
+    }
+    .event-detail {
+      font-size: 1.02rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    /* Modal for map popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+      overflow: auto;
+    }
+    .modal-content {
+      background: white;
+      margin: 8% auto;
+      padding: 24px;
+      border-radius: 20px;
+      width: 92%;
+      max-width: 520px;
+      position: relative;
+      text-align: center;
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 2.2rem;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .modal h3 {
+      font-size: 1.9rem;
+      color: var(--accent);
+      margin-bottom: 0.8em;
+    }
+    .modal .detail {
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-bottom: 1em;
+      font-style: italic;
+    }
+    .modal .venue-info {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      margin: 0.8em 0 1.5em;
+    }
+    footer {
+      padding: 80px 30px 110px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .closing {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.9rem;
+      margin: 0.3em 0 0.7em;
+    }
+    .family {
+      font-size: 1.12rem;
+      color: var(--text-light);
+    }
+    @media (min-width: 768px) {
+      .container { max-width: 960px; }
+      .events-grid { flex-direction: row; flex-wrap: wrap; gap: 32px; justify-content: center; }
+      .event-card { flex: 1 1 45%; max-width: 400px; }
+      h2::before { left: -140px; }
+      h2::after { right: -140px; }
+      .floral { font-size: 12rem; opacity: 0.14; }
+      .modal-content { width: 80%; max-width: 720px; margin: 6% auto; }
+    }
+
+    /* Added only for countdown */
+    #countdown {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin: 1.4em 0 2em;
+      letter-spacing: 1px;
+    }
+    #countdown span {
+      font-weight: 500;
+      color: var(--text-dark);
+      min-width: 40px;
+      display: inline-block;
+    }
+  </style>
+			</head>
+			<body>
+				<div class="container">
+					<div class="floral fl-tl">✿</div>
+					<div class="floral fl-tr">✿</div>
+					<div class="floral fl-bl">✿</div>
+					<div class="floral fl-br">✿</div>
+					<!-- <a href="#" class="login">Log in</a> -->
+					<header>
+						<div class="save-date">SAVE THE DATE</div>
+						<h1 class="names">Ananya <span class="heart">♥</span> Rohan</h1>
+						<div class="main-date">26 April 2026</div>
+						<div class="location">Hyderabad, India</div>
+						<!-- Countdown with proper span IDs -->
+						<div id="countdown">
+							<span id="days">--</span> days 
+      <span id="hours">--</span> hrs 
+      <span id="minutes">--</span> min 
+      <span id="seconds">--</span> sec to go...
+    </div>
+					</header>
+					<section>
+						<h2>The Venue</h2>
+						<p class="intro">
+      With the blessings of our families,<br>
+      we invite you to celebrate the wedding<br>
+      of our beloved daughter & son.
+    </p>
+								<div style="margin: 2.5em 0;">
+									<div style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.9em;">
+        The Grand Imperial
+      </div>
+									<p style="color: var(--text-light); margin: 0.8em 0 1.5em;">
+        123 Wedding Lane, Jubilee Hills<br>
+        Hyderabad<br>
+												<br>
+        13 December 2026 | 11:00 AM
+      </p>
+											</div>
+										</section>
+										<section>
+											<h2>Wedding Events</h2>
+											<div class="events-grid">
+												<div class="event-card" onclick="showMap('Haldi Ceremony', '12 December 2026 | 10:00 AM', 'Venue Name, Hyderabad', 17.542881, 78.481445, 16)">
+													<div class="event-icon">🌸</div>
+													<div class="event-title">Haldi Ceremony</div>
+													<div class="event-detail">
+          12 December 2026<br>
+          10:00 AM<br>
+          Venue Name
+        </div>
+														</div>
+														<div class="event-card" onclick="showMap('Mehendi Celebration', '12 December 2026 | 5:00 PM', 'Venue Name, Hyderabad', 17.542881, 78.481445, 16)">
+															<div class="event-icon">🍃</div>
+															<div class="event-title">Mehendi Celebration</div>
+															<div class="event-detail">
+          12 December 2026<br>
+          5:00 PM<br>
+          Venue Name
+        </div>
+																</div>
+																<div class="event-card" onclick="showMap('Wedding Ceremony', '13 December 2026 | 11:00 AM', 'The Grand Imperial, Jubilee Hills, Hyderabad', 17.4326, 78.4071, 17)">
+																	<div class="event-icon">💍</div>
+																	<div class="event-title">Wedding Ceremony</div>
+																	<div class="event-detail">
+          13 December 2026<br>
+          11:00 AM<br>
+          The Grand Imperial
+        </div>
+																		</div>
+																		<div class="event-card" onclick="showMap('Reception', '13 December 2026 | 7:00 PM', 'Venue Name, Hyderabad', 17.542881, 78.481445, 16)">
+																			<div class="event-icon">✨</div>
+																			<div class="event-title">Reception</div>
+																			<div class="event-detail">
+          13 December 2026<br>
+          7:00 PM<br>
+          Venue Name
+        </div>
+																				</div>
+																			</div>
+																		</section>
+																		<!-- Modal Popup for Map -->
+																		<div id="mapModal" class="modal">
+																			<div class="modal-content">
+																				<span class="close" onclick="closeMap()">×</span>
+																				<h3 id="modalTitle"/>
+																				<div class="detail" id="modalDetail"/>
+																				<div class="venue-info" id="modalVenue"/>
+																				<iframe id="modalMapFrame" width="100%" height="380" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"/>
+																			</div>
+																		</div>
+																		<footer>
+																			<div class="closing">With Love,</div>
+																			<div class="family">Bride's Family  |  Groom's Family</div>
+																		</footer>
+																	</div>
+																	<script>
+  function showMap(title, detail, venue, lat, lng, zoom) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDetail').textContent = detail;
+    document.getElementById('modalVenue').textContent = venue;
+    const mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
+    document.getElementById('modalMapFrame').src = mapUrl;
+    document.getElementById('mapModal').style.display = 'block';
+  }
+  function closeMap() {
+    document.getElementById('mapModal').style.display = 'none';
+    document.getElementById('modalMapFrame').src = '';
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById('mapModal');
+    if (event.target === modal) {
+      closeMap();
+    }
+  }
+
+  // Countdown timer
+  const weddingDate = new Date('2026-04-26T00:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) { document.getElementById('countdown').innerHTML="The big day has arrived!" ; return; } const days=Math.floor(distance (1000 * 60 * 60 * 24)); const hours=Math.floor((distance % (1000 * 60 * 60 * 24)) (1000 * 60 * 60)); const minutes=Math.floor((distance % (1000 * 60 * 60)) (1000 * 60)); const seconds=Math.floor((distance % (1000 * 60)) 1000); document.getElementById('days').textContent=days.toString().padStart(2, '0'); document.getElementById('hours').textContent=hours.toString().padStart(2, '0'); document.getElementById('minutes').textContent=minutes.toString().padStart(2, '0'); document.getElementById('seconds').textContent=seconds.toString().padStart(2, '0'); } setInterval(updateCountdown, 1000); updateCountdown(); run once immediately
+																	</script>
+																</body>
+															</html>
+
+in this html i am converting to react before adding the section element everthing is fine, after adding the section element the black spots appeared
