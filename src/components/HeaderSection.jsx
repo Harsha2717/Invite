@@ -1,5 +1,6 @@
 import { BRIDE, GROOM, STRINGS } from "../constants/Strings";
 import CountDown from "./CountDown";
+import VenueSection from "./VenueSection";
 
 function HeaderSection() {
     return (
@@ -13,13 +14,8 @@ function HeaderSection() {
 
                 {/* Marriage Date */}
                 <div className="main-date">{STRINGS.WEDDING_DATE_STRING}</div>
-
-                {/* Location */}
-                <div className="location">{STRINGS.WEDDING_HALL}</div>
-                                {/* Location */}
-                <div className="location">{STRINGS.WEDDING_LOCATION}</div>
                 
-                
+                {/* Count Down */}
                 <CountDown />
             </header>
         </>
