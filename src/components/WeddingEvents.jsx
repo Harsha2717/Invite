@@ -17,7 +17,7 @@ const events = [
 function WeddingEvents() {
 
   // ✅ default to first event (or null if you prefer)
-  const [selectedEvent, setSelectedEvent] = useState(events[0]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const getEventCard = (event, index) => {
     return (
