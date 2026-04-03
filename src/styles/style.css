@@ -7,9 +7,10 @@
     --gold: #d4af37;
 }
 
-#root{
-    width:100%;
+#root {
+    width: 100%;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -124,14 +125,14 @@ header {
 }
 
 section {
-    padding: 1px 30px 10px;
+    padding: 1px 30px 30px;
     text-align: center;
     position: relative;
     z-index: 1;
 }
 
 .section-events {
-    padding: 1px 30px 110px;
+    padding: 1px 30px 70px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -219,8 +220,8 @@ h2::after {
     height: 100%;
     background: rgba(0, 0, 0, 0.65);
     overflow: auto;
-    display: flex;           
-    align-items: center;     
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -356,3 +357,123 @@ footer {
     background: #FFF8F3;
     text-decoration: none;
 }
+
+
+
+.video-section {
+    padding: 70px 30px;
+    text-align: center;
+      margin-bottom: 60px;
+
+}
+
+.video-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  /* background: #000; */
+  position: relative;
+  top: -90px;
+}
+
+.video-wrapper video {
+  position: absolute; /* 🔥 important */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft aesthetic overlay */
+.video-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255, 248, 243, 0.1),
+            rgba(255, 248, 243, 0.25));
+}
+
+/* Optional text overlay */
+.video-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sound-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    position: absolute;
+
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.story-h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.8em;
+    position: relative;
+}
+
+
+.story-h2::before,
+.story-h2::after {
+    content: "——";
+    color: var(--gold);
+    letter-spacing: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+}
+
+.story-h2::before {
+    left: -90px;
+}
+
+.story-h2::after {
+    right: -90px;
+}
+
+.video-hint {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  animation: fadeHint 3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeHint {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
+  15% { opacity: 1; transform: translate(-50%, 0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}   
