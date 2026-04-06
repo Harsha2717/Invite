@@ -199,14 +199,31 @@ h2::after {
 }
 
 .event-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 0.6em;
 }
 
 .event-detail {
-    font-size: 1.02rem;
+    font-size: 1.52rem;
     color: var(--text-light);
     line-height: 1.5;
+}
+
+.event-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.event-icon video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* or contain if you want full visible */
+  border-radius: 12px;
 }
 
 /* Modal for map popup */
@@ -406,7 +423,6 @@ footer {
     color: white;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-
 .sound-btn {
     position: absolute;
     top: 15px;

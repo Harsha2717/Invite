@@ -7,7 +7,7 @@ const haldi = "Haldi Ceremony";
 const mehendi = "Mehendi Celebration";
 
 const events = [
-  { title: haldi, date: STRINGS.HALDI_DATE_STRING, time: STRINGS.HALDI_TIME_STRING, venue: STRINGS.HALDI_LOCATION, icon: "🌸", lat: 17.542881, lng: 78.481445, zoom: 16 },
+  { title: haldi, date: STRINGS.HALDI_DATE_STRING, time: STRINGS.HALDI_TIME_STRING, venue: STRINGS.HALDI_LOCATION, icon: "🌸", lat: 17.542881, lng: 78.481445, zoom: 16, video: "/haldi.mp4" },
   { title: mehendi, date: STRINGS.MEHENDI_DATE_STRING, time: STRINGS.MEHENDI_TIME_STRING, venue: STRINGS.MEHENDI_LOCATION, icon: "🍃", lat: 17.542881, lng: 78.481445, zoom: 16 },
   { title: wedding, date: STRINGS.WEDDING_DATE_STRING, time: STRINGS.WEDDING_TIME, venue: `${STRINGS.WEDDING_HALL}, ${STRINGS.WEDDING_LOCATION}`, icon: "💍", lat: STRINGS.WEDDING_HALL_LAT, lng: STRINGS.WEDDING_HALL_LNG, zoom: 17 },
 ];
@@ -24,7 +24,17 @@ function WeddingEvents() {
         key={index}
         onClick={() => setSelectedEvent(event)} // ✅ important
       >
-        <div className="event-icon">{event.icon}</div>
+        {event?.video ? <div className="event-icon">
+          <video
+            src={event.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+        </div> : <div className="event-icon">{event.icon}</div>
+        }
         <div className="event-title">{event.title}</div>
         <div className="event-detail">
           {event.date}<br />
