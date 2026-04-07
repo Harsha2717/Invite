@@ -1,5 +1,6 @@
 export const BRIDE = "Jahnavi";
 export const GROOM = "Sree Teja";
+export const SPECIAL = "/special"
 
 export const STRINGS = {
     TITLE: `${BRIDE} & ${GROOM} - Wedding Invitation`,
@@ -7,7 +8,7 @@ export const STRINGS = {
     HEART_SYMBOL: "♥",
     WEDDING_DATE_STRING: "26 April 2026",
     WEDDING_DATE: new Date("2026-04-26"),
-    WEDDING_TIME: "08:15 PM",
+    WEDDING_TIME: "08:16 PM",
     WEDDING_PLACE: "Hyderabad",
     COUNTRY: "India",
     THE_VENUE: "The Venue",
@@ -22,7 +23,7 @@ export const STRINGS = {
     WEDDING_HALL_LAT: 17.442484185195475,
     WEDDING_HALL_LNG: 78.48496101426933,
     HALDI_DATE_STRING: "23 April 2026",
-    HALDI_TIME_STRING: "10:00 AM",
+    HALDI_TIME_STRING: "09:00 AM",
     MEHENDI_DATE_STRING: "24 April 2026",
     MEHENDI_TIME_STRING: "05:00 PM",
     HALDI_LOCATION: "Guest House, Hyderabad",
