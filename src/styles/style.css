@@ -443,6 +443,7 @@ footer {
   object-fit: cover;
 }
 
+
 /* Soft aesthetic overlay */
 .video-wrapper::after {
   content: "";
