@@ -27,7 +27,7 @@ const events = [
     lat: 17.542881,
     lng: 78.481445,
     zoom: 16,
-    video: "/mehindi.mp4",
+    video: "/mehindi4.mp4",
   },
   {
     title: wedding,
