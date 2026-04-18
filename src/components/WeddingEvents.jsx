@@ -16,7 +16,7 @@ const events = [
     lat: 17.529036,
     lng: 78.478538,
     zoom: 16,
-    video: "/haldi.mp4",
+    video: "/Haldi.mp4",
   },
   {
     title: mehendi,
@@ -27,7 +27,7 @@ const events = [
     lat: 17.529036,
     lng: 78.478538,
     zoom: 16,
-    video: "/mehindi4.mp4",
+    video: "/Mehendi.mp4",
   },
   {
     title: wedding,
@@ -38,7 +38,7 @@ const events = [
     lat: STRINGS.WEDDING_HALL_LAT,
     lng: STRINGS.WEDDING_HALL_LNG,
     zoom: 17,
-    video: "/wedding.mp4",
+    video: "/Wedding.mp4",
   },
 ];
 
