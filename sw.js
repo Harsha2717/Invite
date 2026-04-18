@@ -1,6 +1,16 @@
-const CACHE_NAME = "wedding-cache-v2";
+const CACHE_NAME = "wedding-cache-v4";
+
+const PRECACHE_ASSETS = [
+  "/",
+  "/index.html"
+];
 
 self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(PRECACHE_ASSETS);
+    })
+  );
   self.skipWaiting();
 });
 
@@ -16,12 +26,10 @@ self.addEventListener("fetch", event => {
       if (cached) return cached;
 
       return fetch(event.request).then(response => {
-        const responseClone = response.clone();
-
+        const clone = response.clone();
         caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseClone);
+          cache.put(event.request, clone);
         });
-
         return response;
       });
     })
