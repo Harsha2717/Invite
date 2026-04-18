@@ -69,7 +69,7 @@ function WeddingEvents() {
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
             />
           </div>
         ) : (
