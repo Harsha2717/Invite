@@ -1,4 +1,4 @@
-const CACHE_NAME = "wedding-video-cache-v1";
+const CACHE_NAME = "wedding-cache-v5";
 
 self.addEventListener("install", () => {
   self.skipWaiting();
@@ -11,25 +11,25 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   const req = event.request;
 
-  // cache videos
-  if (
-    req.url.includes(".mp4") ||
-    req.url.includes(".webm") ||
-    req.destination === "video"
-  ) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(cache =>
-        cache.match(req).then(cached => {
-          if (cached) {
-            return cached;
-          }
+  if (req.method !== "GET") return;
 
-          return fetch(req).then(networkRes => {
-            cache.put(req, networkRes.clone());
-            return networkRes;
-          });
-        })
-      )
-    );
-  }
+  event.respondWith(
+    caches.match(req).then(cached => {
+      if (cached) return cached;
+
+      return fetch(req).then(response => {
+        // ❗ do NOT cache partial content (206)
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
+        }
+
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(req, clone);
+        });
+
+        return response;
+      });
+    })
+  );
 });
