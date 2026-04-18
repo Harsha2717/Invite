@@ -8,45 +8,37 @@ function VideoPlayBack() {
   const [showIcon, setShowIcon] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  // ✅ Show hint when video comes into view
+  // show hint when video visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setShowHint(true);
-
-          // auto hide after 3 sec
           setTimeout(() => setShowHint(false), 3000);
-
-          observer.disconnect(); // run only once
+          observer.disconnect();
         }
       },
       { threshold: 0.4 }
     );
 
-    if (wrapperRef.current) {
-      observer.observe(wrapperRef.current);
-    }
-
+    if (wrapperRef.current) observer.observe(wrapperRef.current);
     return () => observer.disconnect();
   }, []);
 
   const handleTap = () => {
     const now = Date.now();
     const video = videoRef.current;
-
     if (!video) return;
 
-    // hide hint on interaction
     setShowHint(false);
 
+    // double tap
     if (now - lastTapRef.current < 300) {
-      // DOUBLE TAP → restart
       video.currentTime = 0;
       video.play();
       showTempIcon("⏮️");
     } else {
-      // SINGLE TAP → toggle sound
+      // single tap
       video.muted = !video.muted;
       showTempIcon(video.muted ? "🔇" : "🔊");
     }
@@ -65,15 +57,18 @@ function VideoPlayBack() {
 
       <div
         className="video-wrapper"
-        ref={wrapperRef} // ✅ needed for observer
+        ref={wrapperRef}
         onClick={handleTap}
       >
         <video
+          key="prewedding-video"
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
+          poster="/cover.jpg"
         >
           <source src="/Pre-Wedding.mp4" type="video/mp4" />
         </video>
