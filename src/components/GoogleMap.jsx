@@ -18,7 +18,6 @@ function DisplayMap({ mapData, onClose }) {
                     {mapData.time}
                 </div>
 
-                {/* 🔥 Clean Flex Row */}
                 <div className="venue-container">
                     <div className="venue-info center">
                         {mapData.venue}

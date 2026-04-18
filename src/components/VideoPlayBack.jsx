@@ -75,7 +75,7 @@ function VideoPlayBack() {
           loop
           playsInline
         >
-          <source src="/telusa.mp4" type="video/mp4" />
+          <source src="/Pre-Wedding.mp4" type="video/mp4" />
         </video>
 
         {showIcon && <div className="tap-icon">{showIcon}</div>}
