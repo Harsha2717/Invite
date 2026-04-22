@@ -41,7 +41,7 @@ function DisplayMap({ mapData, onClose }) {
                             rel="noopener noreferrer"
                             className="direction-btn secondary"
                         >
-                            Street View 👁
+                            Street View
                         </a>
                     </div>
                 </div>
