@@ -95,19 +95,40 @@ header {
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.6);
 }
-
 .names {
     font-family: 'Great Vibes', cursive;
-    font-size: 5.9rem;
-    line-height: 0.88;
-    margin: 0.1em 0;
+    display: flex;
+    flex-direction: row;   /* change from column → row */
+    align-items: center;
+    justify-content: center;
+    line-height: 1.05;
+    margin: 0.2em 0;
+    gap: 0.25em;
+}
+
+.bride,
+.groom {
+    font-size: clamp(3.8rem, 6vw, 7rem);  /* slightly reduce vw for row layout */
+    text-align: center;
 }
 
 .heart {
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 3vw, 3.5rem);
     color: #c94b6c;
-    margin: 0 0.35em;
-    vertical-align: middle;
+}
+@media (max-width: 600px) {
+  .names {
+    flex-direction: column;
+  }
+
+  .bride,
+  .groom {
+    font-size: clamp(3.8rem, 10vw, 7rem);
+  }
+
+  .heart {
+    margin: 0.1em 0;
+  }
 }
 
 .save-date {
@@ -539,3 +560,9 @@ footer {
   85% { opacity: 1; }
   100% { opacity: 0; }
 }   
+
+.map-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}

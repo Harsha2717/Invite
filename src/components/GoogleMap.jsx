@@ -4,7 +4,8 @@ function DisplayMap({ mapData, onClose }) {
 
     const mapUrl = `https://www.google.com/maps?q=${mapData.lat},${mapData.lng}&z=${mapData.zoom}&output=embed`;
     const directionUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapData.lat},${mapData.lng}`;
-
+    const streetViewUrl =
+        `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${mapData.lat},${mapData.lng}`;
     return (
         <div className="modal">
             <div className="modal-content">
@@ -24,14 +25,25 @@ function DisplayMap({ mapData, onClose }) {
                         {mapData.venue}
                     </div>
 
-                    <a
-                        href={directionUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="direction-btn"
-                    >
-                        Get Directions ↗
-                    </a>
+                    <div className="map-actions">
+                        <a
+                            href={directionUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="direction-btn"
+                        >
+                            Directions ↗
+                        </a>
+
+                        <a
+                            href={streetViewUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="direction-btn secondary"
+                        >
+                            Street View 👁
+                        </a>
+                    </div>
                 </div>
 
                 <iframe
