@@ -13,7 +13,7 @@ function CountDown() {
     })
     return (
         <>
-            {timeLeft > 0 ? countDownDiv(timeLeft) : weddingDateDiv()}
+            {timeLeft > 0 ? countDownDiv(timeLeft) : WeddingDateDiv(timeLeft)}
         </>
     );
 }
@@ -34,10 +34,30 @@ function countDownDiv(timeRemaining) {
     </>
 }
 
-function weddingDateDiv() {
-    return <>
-        The big day has arrived!
-    </>
+function WeddingDateDiv(timeLeft) {
+    if (timeLeft === 0) {
+        return (
+            <div id="wedding-date">
+                The big day has arrived!
+            </div>
+        );
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+        (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+        (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    return (
+        <div id="wedding-date">
+            Happily married since {days} day{days !== 1 ? "s" : ""} {" "}
+            {hours} hour{hours !== 1 ? "s" : ""} and{" "}
+            {minutes} minute{minutes !== 1 ? "s" : ""}
+        </div>
+    );
 }
 
 function calculateTimeLeft(weddingDate) {
